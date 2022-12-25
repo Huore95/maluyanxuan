@@ -12,7 +12,7 @@
         <img src="../../assets/logo.png" width="100" class="logo" alt="">
         <!-- 登录表单 -->
         <div class="login-form">
-            <van-form @submit="onSubmit">
+            <van-form @submit="onSubmit"> 
                 <van-field 
                 v-model="username" 
                 name="用户名" 
@@ -39,7 +39,7 @@
                 <!-- 文本提示 -->
                 <div style="margin:16px;">
                     <p class="link-register" @click="isTitle = !isTitle">{{ isTitle ? '立即注册' : '已有账号，立即登录' }}</p>
-                    <van-button round block type="primary">{{ isTitle ? '登录' : '注册' }}</van-button>
+                    <van-button round block type="primary" native-type="submit">{{ isTitle ? '登录' : '注册' }}</van-button>
                 </div>
             </van-form>
         </div>
@@ -47,17 +47,54 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRefs } from "vue"
+import { register, login } from "@/api/index.js"
+import { ref, reactive, toRefs } from "vue";
+import { showNotify } from "vant"
 import Identify from "../../components/Identify.vue"
+import {useRoute,useRouter} from "vue-router"
+
+
+
 let userInfo = reactive({
-    username: "937832539",
+    username: "17633935698",     
     password: "123456",
     isTitle: true, // 控制是登录还是注册 
 });
+let route = useRoute();
+let router = useRouter();
+
 
 // 点击提交
-let onSubmit = () => { }
-
+let onSubmit = () => {
+    if (userInfo.isTitle) {
+        // 表示登录
+        // console.log("登录...");
+        login(userInfo.username, userInfo.password).then(data => {
+            // console.log(data);
+            if (data.resultCode == 200) {
+                localStorage.setItem("mltoken", data.data)
+                router.replace("/home")
+                showNotify({
+                    type: 'success',
+                    message: "登录成功"
+                });
+            }
+        })
+    } else {
+        // 表示注册
+        // console.log("注册...");
+        register(userInfo.username, userInfo.password).then(data => {
+            console.log(data);
+            if (data.resultCode == 200) {
+                showNotify({
+                    type: 'success',
+                    message: "注册成功"
+                });
+                userInfo.isTitle = true // 注册成功后开始登录
+            }
+        })
+    }
+}
 // 点击返回
 let onClickLeft = () => { }
 
