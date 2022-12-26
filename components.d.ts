@@ -7,15 +7,23 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Goods: typeof import('./src/components/Goods.vue')['default']
     Identify: typeof import('./src/components/Identify.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TabBar: typeof import('./src/components/TabBar.vue')['default']
+    VanActionBar: typeof import('vant/es')['ActionBar']
+    VanActionBarButton: typeof import('vant/es')['ActionBarButton']
+    VanActionBarIcon: typeof import('vant/es')['ActionBarIcon']
     VanButton: typeof import('vant/es')['Button']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
+    VanGrid: typeof import('vant/es')['Grid']
+    VanGridItem: typeof import('vant/es')['GridItem']
     VanIcon: typeof import('vant/es')['Icon']
     VanNavBar: typeof import('vant/es')['NavBar']
+    VanSwipe: typeof import('vant/es')['Swipe']
+    VanSwipeItem: typeof import('vant/es')['SwipeItem']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
   }

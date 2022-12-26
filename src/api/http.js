@@ -4,6 +4,7 @@ import axios from "axios"
 import {
     showNotify
 } from 'vant';
+import router from "../router";
 
 // http://backend-api-01.newbee.ltd/api/v1/user/login
 // process.env.NODE_ENV
@@ -35,6 +36,11 @@ http.interceptors.response.use((response) => {
     // .....  Notify
     if (data.resultCode != 200) {
 
+        if (data.resultCode == 416) {
+            if (router.currentRoute.path != '/login') {
+                router.push("/login?needback=1")
+            }
+        }
         // 代码走到这里,说明数据不是我们需要的,给出提示
         showNotify({
             type: 'danger',

@@ -40,7 +40,13 @@ const asyncRouutes = [
             isShowNav:false
         }
     },
-
+    {
+        path: '/info/:productId',
+        component: () => import("../views/Info/Info.vue"),
+        meta: {
+            isShowNav:false
+        }
+    },
 ]
 
 const router = createRouter({

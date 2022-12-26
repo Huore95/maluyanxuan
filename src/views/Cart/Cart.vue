@@ -4,10 +4,12 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted } from "vue"
+import { useCart } from '@/store/cartStore.js'
+let store = useCart();
 
+onMounted(() => {
+    store.getCartListAsync();
+});
 </script>
-
-<style>
-
-</style>

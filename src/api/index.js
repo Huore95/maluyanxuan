@@ -18,3 +18,23 @@ export function login(name, pwd) {
         passwordMd5:md5(pwd)
     })
 }
+
+//首页面数据接口
+export function getIndexInfo() {
+    return http.get("/index-infos")
+}
+
+//根据商品ID,获取商品的详情
+export function getInfoData(id) {
+    return http.get("/goods/detail/"+id)
+}
+
+//添加商品到购物车
+export function addCart(options) {
+    return http.post("/shop-cart",options)
+}
+
+//添加商品到购物车
+export function getCartList() {
+    return http.get("/shop-cart")
+}

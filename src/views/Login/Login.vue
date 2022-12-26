@@ -73,7 +73,11 @@ let onSubmit = () => {
             // console.log(data);
             if (data.resultCode == 200) {
                 localStorage.setItem("mltoken", data.data)
-                router.replace("/home")
+                if (route.query.needback == 1) {
+                    router.back();
+                } else {
+                    router.replace("/home")
+                }
                 showNotify({
                     type: 'success',
                     message: "登录成功"

@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 // import './style.css'
 import App from './App.vue'
-
 import router from './router'
-
+import {createPinia} from 'pinia'
+const pinia = createPinia()
 
 let app = createApp(App);
 
@@ -23,4 +23,6 @@ app.use(vant)
 
 //注册路由
 app.use(router)
+//注册仓库
+app.use(pinia)
 app.mount('#app')
