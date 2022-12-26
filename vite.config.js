@@ -2,12 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
-import path from 'path';
-import http from './src/api/http';
+import path from "path"
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base:"./",
+  base: "./",
   plugins: [
     vue(),
     Components({
@@ -18,13 +16,13 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "http://backend-api-01.newbee.ltd",
-        changeOrigin:true,
+        changeOrigin: true,
       },
     },
   },
   resolve: {
     alias: {
-      '@':path.resolve(__dirname,'./src')
+      '@': path.resolve(__dirname, './src')
     }
   }
 })
