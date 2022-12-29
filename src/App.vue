@@ -1,20 +1,20 @@
 <template>
    <div>
       <router-view></router-view>
-      <tab-bar v-if="isSHowNav"></tab-bar>
+      <TabBar v-if="isShowNav"></TabBar>
    </div>
 </template>
 
 <script setup>
-import TabBar from "./components/TabBar.vue"
-import { watch, ref } from "vue"
-import {useRoute} from 'vue-router'
+import TabBar from "./components/TabBar.vue";
+import { watch, ref } from "vue";
+import { useRoute } from 'vue-router';
 
 let route = useRoute();
-let isSHowNav = ref(false);
+let isShowNav = ref(false);
 
 watch(route, newVal => {
-  isSHowNav.value = newVal.meta.isSHowNav
+  isShowNav.value = newVal.meta.isShowNav;
 }, {
   immediate: true
 });

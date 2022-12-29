@@ -1,9 +1,9 @@
 <template>
     <div>
-        <van-tabbar route active-color="1baeae">
+        <van-tabbar route active-color="#1baeae">
             <van-tabbar-item replace to="/home" icon="home-o">
                 <span>首页</span>
-                <template #icon>
+                <template #icon="props">
                     <span class="icon iconfont icon-shouye"></span>
                 </template>
             </van-tabbar-item>
@@ -29,17 +29,20 @@
     </div>
 </template>
 
-<script>
+<script setup>
+
 
 </script>
 
 <style lang="less" scoped>
-.van-tabbar-item{
+.van-tabbar-item {
     font-size: 9px;
-    .iconfont{
+
+    .iconfont {
         position: relative;
         font-size: 0.55rem;
-        .cartNum{
+
+        .cartNum {
             position: absolute;
             top: -3px;
             right: -6px;
@@ -49,8 +52,7 @@
             line-height: 14px;
             border-radius: 50%;
             background-color: #ee0a24;
-            color:#fff;
-
+            color: #fff;
         }
     }
 }
