@@ -47,6 +47,36 @@ const asyncRouutes = [
             isShowNav:false
         }
     },
+    {
+        path: '/addressList',
+        component: () => import("../views/Address/AddressList.vue"),
+        meta: {
+            isShowNav:false
+        }
+    },
+    {
+        path: '/addressAddAndEdit',
+        component: () => import("../views/Address/AddressAddAndEdit.vue"),
+        meta: {
+            isShowNav: false
+        } 
+    }
+    ,
+    {
+        path: '/create-order',
+        component: () => import("../views/CreateOrder/CreateOrder.vue"),
+        meta: {
+            isShowNav:false
+        }
+    },
+    {
+        path: '/order',
+        component: () => import("../views/Order/Order.vue"),
+        meta: {
+            isShowNav: false,
+            til:"订单页"
+        } 
+    }
 ]
 
 const router = createRouter({
@@ -58,6 +88,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    document.title = to.meta.til || "码路严选"
     next();
 })
 
