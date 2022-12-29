@@ -1,0 +1,1 @@
+import{b as o}from"./index.e04da3cd.js";import{g as s,i as r,o as l,c,a as t,t as u,u as i}from"./index.c307a268.js";const _=t("h1",null,"\u6211\u7684\u9875\u9762",-1),g={__name:"User",setup(f){let a=s({});r(()=>{n()});async function n(){let e=await o();a.value=e.data}return(e,p)=>(l(),c("div",null,[_,t("h1",null,u(i(a)),1)]))}};export{g as default};
